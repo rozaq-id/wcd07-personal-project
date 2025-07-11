@@ -1,0 +1,86 @@
+/* About section - enhanced animations */
+
+.about-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.about-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animations for content */
+.about-section h2 {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+}
+
+.about-section.animate-in h2 {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.about-section p {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.about-section p:first-of-type {
+  transition-delay: 0.4s;
+}
+
+.about-section p:last-of-type {
+  transition-delay: 0.6s;
+}
+
+.about-section.animate-in p {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Subtle hover effects */
+.about-section.animate-in {
+  transition: transform 0.3s ease;
+}
+
+.about-section.animate-in:hover {
+  transform: translateY(-2px);
+}
+
+/* Add a subtle glow effect when animated in */
+.about-section.animate-in::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(51, 51, 51, 0.1),
+    transparent
+  );
+  border-radius: 8px;
+  opacity: 0;
+  animation: subtleGlow 2s ease-in-out 1s forwards;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes subtleGlow {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
